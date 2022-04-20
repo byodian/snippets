@@ -1,0 +1,19 @@
+@mixin flexbox-basis($direction, $gap: false) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+@mixin background-image($color, $url: false) {
+  background-color: $color;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @if $url {
+    background-image: url($url);
+  }
+}
+

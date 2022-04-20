@@ -1,0 +1,45 @@
+import Layout from '@layouts/index.vue'
+
+const routes = [
+  {
+    path: '/404',
+    component: () => import('@views/404.vue'),
+    hidden: true
+  },
+  {
+    path: '',
+    component: Layout,
+    redirect: '/home',
+    hidden: true,
+    children: [
+      {
+        path: 'home',
+        component: () => import('@views/chart.vue'),
+        name: 'home',
+        meta: {
+          name: 'home'
+        }
+      },
+      {
+        path: 'about',
+        component: () => import('@/views/404.vue'),
+        name: 'about',
+        meta: {
+          name: 'about'
+        }
+      },
+      {
+        path: 'search',
+        component: () => import('@views/search.vue'),
+        name: 'search',
+        meta: {
+          name: 'search'
+        }
+      }
+    ]
+  },
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+export default routes
