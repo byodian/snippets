@@ -1,14 +1,15 @@
 <template>
-  <div class="search w-[800px] mx-auto flex h-full">
-    <div class="search-wrapper m-auto">
+  <div class="search w-[800px] mx-auto mt-24 flex h-full">
+    <div class="search-wrapper w-full">
       <el-form
         label-position="left"
         class="search-form pb-8"
         @submit.native.prevent
       >
-        <el-form-item label="住房租金：" class="search-form-radio">
+        <el-form-item label="住房租金：" class="search-form-radio flex relative">
           <el-radio-group
             v-model="checkedRentPrice"
+            class="h-full items-center flex-wrap gap-x-8"
             @change="handleChange($event, 'checkedRentPrice', rentPriceList)"
           >
             <el-radio label="">
@@ -40,14 +41,15 @@
           <el-input v-model="rentPriceCustomMax" />
           <span class="search-custom-unit ml-2">元</span>
           <span
-            class="search-custom-btn ml-4 cursor-pointer"
+            class="search-custom-btn ml-4 cursor-pointer text-2xl"
             @click="handleCustomSearch('rentPrice')"
           >确定</span>
         </div>
 
-        <el-form-item label="租房类型：" class="search-form-radio">
+        <el-form-item label="租房类型：" class="search-form-radio flex relative">
           <el-radio-group
             v-model="checkedRentType"
+            class="h-full items-center flex-wrap gap-x-8"
             @change="handleChange($event, 'checkedRentType', rentTypeList)"
           >
             <el-radio label="">
@@ -80,9 +82,10 @@
 
         <!-- 更多筛选条件 -->
         <div v-show="moreFlag">
-          <el-form-item label="租房类型：" class="search-form-radio">
+          <el-form-item label="租房类型：" class="search-form-radio flex relative">
             <el-radio-group
               v-model="checkedRentType"
+              class="h-full items-center flex-wrap gap-x-8"
               @change="handleChange($event, 'checkedRentType', rentTypeList)"
             >
               <el-radio label="">
@@ -243,26 +246,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search {
-  &-form-radio {
-    position: relative;
-    display: flex;
-  }
-
-  &-tags {
-    color: #999;
-  }
+.search-tags {
+  color: #999;
 }
 
 .search-custom {
   ::v-deep .el-input {
-    width: 120px;
+    width: 60px;
   }
-}
-
-::v-deep .el-input__inner {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 ::v-deep .el-button {
@@ -281,14 +272,12 @@ export default {
 
 ::v-deep .el-radio-group {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 24px;
 }
 
 ::v-deep .el-radio-group,
 ::v-deep .el-radio,
 ::v-deep .el-radio__input {
-  line-height: inherit;
+  margin-right: 0;
 }
 
 ::v-deep .el-form-item__content {

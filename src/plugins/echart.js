@@ -12,7 +12,7 @@ import {
   TooltipComponent,
   GridComponent,
   DatasetComponent,
-  DatasetComponentOption,
+  // DatasetComponentOption,
   TransformComponent,
   LegendComponent,
   GraphicComponent,
@@ -44,7 +44,7 @@ echarts.use([
 ])
 
 export default {
-  install(Vue) {
+  install (Vue) {
     Vue.prototype.$echarts = echarts
     Vue.prototype.$echarts.registerTheme('zlplw', echartsTheme)
   }
