@@ -1,5 +1,5 @@
 <template>
-  <header class="h-24">
+  <header class="h-24 flex-shrink-0">
     <ul class="flex gap-x-4 justify-center h-full">
       <li v-for="route in routes" :key="route.name">
         <router-link :to="route.path" class="flex h-full items-center">

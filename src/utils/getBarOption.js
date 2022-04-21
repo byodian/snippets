@@ -13,6 +13,7 @@ const getBarOption = (data) => {
       left: 'center'
     },
     grid: {
+      show: false,
       bottom: 20,
       left: 30,
       right: 30

@@ -1,12 +1,15 @@
 <template>
-  <div class="search w-[800px] mx-auto mt-24 flex h-full">
-    <div class="search-wrapper w-full">
+  <div class="search flex h-full bg-[#2b3440]">
+    <div class="search-wrapper w-[800px] m-auto">
       <el-form
         label-position="left"
         class="search-form pb-8"
         @submit.native.prevent
       >
-        <el-form-item label="住房租金：" class="search-form-radio flex relative">
+        <el-form-item
+          label="住房租金："
+          class="search-form-radio flex relative"
+        >
           <el-radio-group
             v-model="checkedRentPrice"
             class="h-full items-center flex-wrap gap-x-8"
@@ -24,7 +27,7 @@
             </el-radio>
           </el-radio-group>
           <el-button
-            class="absolute right-4 top-0"
+            class="search-more--icon absolute right-4 top-0 search-icon"
             :icon="rentPriceFlag ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
             type="text"
             @click="handleMoreRadioOpen('rentPriceFlag')"
@@ -39,14 +42,17 @@
           <el-input v-model="rentPriceCustomMin" />
           <span class="search-custom-delimiter">-</span>
           <el-input v-model="rentPriceCustomMax" />
-          <span class="search-custom-unit ml-2">元</span>
+          <span class="search-custom-unit ml-2 text-gray-100">元</span>
           <span
-            class="search-custom-btn ml-4 cursor-pointer text-2xl"
+            class="search-custom-btn ml-4 cursor-pointer text-2xl text-gray-100"
             @click="handleCustomSearch('rentPrice')"
           >确定</span>
         </div>
 
-        <el-form-item label="租房类型：" class="search-form-radio flex relative">
+        <el-form-item
+          label="租房类型："
+          class="search-form-radio flex relative"
+        >
           <el-radio-group
             v-model="checkedRentType"
             class="h-full items-center flex-wrap gap-x-8"
@@ -73,7 +79,7 @@
             </div>
           </el-radio-group>
           <el-button
-            class="absolute right-4 top-0"
+            class="search-more--icon absolute right-4 top-0"
             :icon="rentTypeFlag ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
             type="text"
             @click="handleMoreRadioOpen('rentTypeFlag')"
@@ -82,7 +88,10 @@
 
         <!-- 更多筛选条件 -->
         <div v-show="moreFlag">
-          <el-form-item label="租房类型：" class="search-form-radio flex relative">
+          <el-form-item
+            label="租房类型："
+            class="search-form-radio flex relative"
+          >
             <el-radio-group
               v-model="checkedRentType"
               class="h-full items-center flex-wrap gap-x-8"
@@ -109,7 +118,7 @@
               </div>
             </el-radio-group>
             <el-button
-              class="absolute right-4 top-0"
+              class="search-more--icon absolute right-4 top-0"
               :icon="rentTypeFlag ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
               type="text"
               @click="handleMoreRadioOpen('rentTypeFlag')"
@@ -119,7 +128,7 @@
 
         <div class="grid place-content-center">
           <el-button
-            class="more-search-btn"
+            class="search-more--btn"
             type="text"
             @click="moreFlag = !moreFlag"
           >
@@ -246,19 +255,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search-tags {
-  color: #999;
-}
+.search {
+  > * {
+    color: #FFF;
+  }
 
-.search-custom {
-  ::v-deep .el-input {
-    width: 60px;
+  &-more--icon {
+    color: inherit;
+  }
+
+  &-tags {
+    color: #999;
+  }
+
+  &-custom {
+    ::v-deep .el-input {
+      width: 60px;
+    }
+  }
+
+  &-more--btn {
+    padding-bottom: 0;
+    color: #CCC;
   }
 }
 
 ::v-deep .el-button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+::v-deep .el-radio {
+  color: inherit;
 }
 
 ::v-deep .el-radio__input {
@@ -292,11 +320,7 @@ export default {
 
 ::v-deep .el-form-item__label {
   flex: 0 0 150px;
-  color: #999;
+  color: #CCC;
 }
 
-.more-search-btn {
-  padding-bottom: 0;
-  color: #999;
-}
 </style>

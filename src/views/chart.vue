@@ -1,6 +1,6 @@
 <template>
-  <div class="flex h-full">
-    <div class="w-[800px] h-[300px] mx-auto">
+  <div class="flex h-full bg-[#2b3440]">
+    <div class="w-[800px] h-[300px] m-auto">
       <AppEchart :option="option" />
     </div>
   </div>
@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       cdata: {
-        title: 'title',
+        title: '图表标题',
         xAxisData: ['2010', '2011', '2013', '2014'],
         yAxisName: 'Y 轴标题',
         seriesData: [10, 20, 30, 41]
