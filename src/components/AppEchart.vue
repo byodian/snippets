@@ -5,11 +5,11 @@
 <script>
 // @ts-nocheck
 import tdTheme from './theme.json' // 引入默认主题
-import resizeMixins from '@/utils/resizeMixins'
+import resizeMixin from '@/mixins/resizeMixin'
 
 export default {
   name: 'Echart',
-  mixins: [resizeMixins],
+  mixins: [resizeMixin],
   props: {
     className: {
       type: String,
@@ -24,9 +24,10 @@ export default {
       default: '100%'
     },
     height: {
-      type: String
+      type: String,
+      default: '100%'
     },
-    options: {
+    option: {
       type: Object,
       default: () => ({})
     }
@@ -37,10 +38,10 @@ export default {
     }
   },
   watch: {
-    options: {
-      handler (options) {
+    option: {
+      handler (option) {
         // 设置true清空echart缓存
-        this.chart.setOption(options, true)
+        this.chart.setOption(option, true)
       },
       deep: true
     }
@@ -54,7 +55,7 @@ export default {
     initChart () {
       // 初始化 echart
       this.chart = this.$echarts.init(this.$el, 'tdTheme')
-      this.chart.setOption(this.options, true)
+      this.chart.setOption(this.option, true)
 
       // 默认高光第一选项 并保存数据
       this.chart.dispatchAction({ type: 'highlight', seriesIndex: 1, dataIndex: 0 })

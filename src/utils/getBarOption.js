@@ -1,47 +1,86 @@
-/**
- * * 一维数组转多维数组
- * * [{}, {}] => [[], []]
- * @param {Arrauy} params
- */
-export const unflat = function (params) {
-  if (!params) return
-  return params.map(item => {
-    let interValue = []
-    Object.keys(item).forEach(key => {
-      interValue.push(item[key])
-    })
-    return interValue
-  })
-}
-
-/**
- * * 小数点数字转百分数
- * @param {Number} decimal
- */
-export const toPercentage = function (decimal) {
-  return Number((decimal * 100).toFixed(2))
-}
-
-/**
- * 简易防抖函数
- * @param {Function} func -防抖目标函数
- * @param {Number} delay - 防抖时间间隔
- */
- export const debounce = (func, delay) => {
-  let timer
-  return function () {
-    timer && clearTimeout(timer)
-    timer = setTimeout(() => {
-      func.apply(this, arguments)
-    }, delay)
+// Bar chart options
+/*
+ * @params {Object} data
+ * @params {String} data.title title of the chart
+ * @params {Array} data.xAxisData xAxis data of the chart
+ * @params {String} data.yAxisName name of the yAxis
+ * @params {Array} data.seriesData data of the series
+ **/
+const getBarOption = (data) => {
+  return {
+    title: {
+      text: data.title,
+      left: 'center'
+    },
+    grid: {
+      bottom: 20,
+      left: 30,
+      right: 30
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          show: true
+        }
+      }
+    },
+    xAxis: {
+      type: 'category',
+      data: data.xAxisData,
+      minInterval: 1,
+      axisLine: {
+        lineStyle: {
+          opacity: 1,
+          type: 'solid'
+        }
+      },
+      axisTick: {
+        show: true,
+        lineStyle: {
+          opacity: 0.6
+        },
+        // 刻度线和标签对齐
+        alignWithLabel: true
+      }
+    },
+    yAxis: {
+      type: 'value',
+      minInterval: 1,
+      name: data.yAxisName,
+      nameTextStyle: {
+        lineHeight: 20
+      },
+      axisLine: {
+        show: false
+      },
+      axisLabel: {
+        show: true,
+        fontSize: 12
+      },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          opacity: 0.6,
+          type: 'dashed'
+        }
+      }
+    },
+    series: [
+      {
+        type: 'bar',
+        lineStyle: {
+          color: '#5BCD60'
+        },
+        barWidth: '30%',
+        emphasis: {
+          focus: 'series'
+        },
+        data: data.seriesData
+      }
+    ]
   }
 }
 
-/**
- * @param {string} path
- * @returns {Boolean}
- */
-export function isExternal (path) {
-  return /^(https?:|mailto:|tel:)/.test(path)
-}
-
+export default getBarOption

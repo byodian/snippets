@@ -17,15 +17,15 @@ const routes = [
         component: () => import('@views/chart.vue'),
         name: 'home',
         meta: {
-          name: 'home'
+          name: 'Chart'
         }
       },
       {
-        path: 'about',
-        component: () => import('@/views/404.vue'),
-        name: 'about',
+        path: 'cesium',
+        component: () => import('@/views/cesium.vue'),
+        name: 'cesium',
         meta: {
-          name: 'about'
+          name: 'Cesium'
         }
       },
       {
@@ -33,7 +33,7 @@ const routes = [
         component: () => import('@views/search.vue'),
         name: 'search',
         meta: {
-          name: 'search'
+          name: 'Search'
         }
       }
     ]

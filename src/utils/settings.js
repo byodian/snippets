@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'code snippet',
+  title: 'Code Snippets',
 
   /**
    * @type {boolean} true | false
